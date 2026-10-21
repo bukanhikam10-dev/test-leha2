@@ -109,9 +109,13 @@
                         <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/20">✨</div>
                         <span class="text-white text-[11px] mt-1 drop-shadow">Gemini</span>
                     </div>
+                    
+                    <!-- WhatsApp Icon menggunakan PNG dari Drive Anda -->
                     <div onclick="openApp('whatsapp')" class="flex flex-col items-center cursor-pointer relative">
-                        <div class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">26</div>
-                        <div class="w-14 h-14 bg-yellow-400 rounded-2xl flex items-center justify-center text-2xl shadow-lg">💬</div>
+                        <div class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold z-10">26</div>
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden bg-white">
+                            <img src="https://lh3.googleusercontent.com/d/18q4b8COkzrTT06P0xPtW-sfCWF5OmO0U" class="w-full h-full object-cover">
+                        </div>
                         <span class="text-white text-[11px] mt-1 drop-shadow">WhatsApp</span>
                     </div>
                 </div>
@@ -119,114 +123,7 @@
                 <div class="glass p-3 rounded-3xl flex justify-around items-center mb-1">
                     <div onclick="openApp('whatsapp')" class="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center text-white cursor-pointer shadow">📞</div>
                     <div onclick="openApp('gallery')" class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white cursor-pointer shadow">🌐</div>
-                    <div onclick="openApp('whatsapp')" class="w-12 h-12 bg-yellow-400 rounded-2xl flex items-center justify-center text-white cursor-pointer shadow">💬</div>
-                    <div onclick="openApp('notes')" class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-white cursor-pointer shadow">🎵</div>
-                </div>
-            </div>
-
-            <!-- App View Container -->
-            <div id="app-view" class="hidden absolute inset-0 bg-white z-30 flex flex-col pt-12">
-                <div class="bg-slate-100 px-4 py-3 border-b flex items-center justify-between">
-                    <button onclick="closeApp()" class="text-blue-600 font-semibold text-sm flex items-center cursor-pointer">‹ Kembali</button>
-                    <h2 id="app-title" class="font-bold text-slate-800 text-sm">Aplikasi</h2>
-                    <span class="w-8"></span>
-                </div>
-                <div id="app-content" class="flex-1 overflow-y-auto bg-slate-50 text-slate-800 text-sm"></div>
-            </div>
-
-        </div>
-
-        <div class="absolute bottom-1.5 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-white/70 rounded-full z-50 cursor-pointer" onclick="goHome()"></div>
-    </div>
-
-    <script>
-        function unlockPhone() {
-            const lockScreen = document.getElementById('lock-screen');
-            const homeScreen = document.getElementById('home-screen');
-            
-            lockScreen.classList.add('hidden');
-            homeScreen.classList.remove('hidden');
-            homeScreen.classList.add('flex');
-        }
-
-        function goHome() {
-            document.getElementById('app-view').classList.add('hidden');
-            document.getElementById('home-screen').classList.remove('hidden');
-            document.getElementById('home-screen').classList.add('flex');
-            document.getElementById('lock-screen').classList.add('hidden');
-        }
-
-        function openApp(appName) {
-            const appView = document.getElementById('app-view');
-            const appTitle = document.getElementById('app-title');
-            const appContent = document.getElementById('app-content');
-
-            appView.classList.remove('hidden');
-
-            if(appName === 'whatsapp') {
-                appTitle.innerText = "kris 🐺";
-                appContent.innerHTML = `
-                    <div class="p-4 space-y-3 bg-slate-100 min-h-full">
-                        <div class="bg-white p-3 rounded-2xl shadow-sm max-w-[80%]">liat nanti ya, lg crunch time</div>
-                        <div class="bg-white p-3 rounded-2xl shadow-sm max-w-[80%]">malem ini meeting sampe malem kayaknya</div>
-                        <div class="bg-yellow-300 p-3 rounded-2xl shadow-sm max-w-[80%] ml-auto">oke. kalo free kabarin. kalo ga, aku rayain sama soonie aja</div>
-                        <div class="bg-yellow-300 p-3 rounded-2xl shadow-sm max-w-[80%] ml-auto">kamu udah lama ga elus2 kepala aku</div>
-                        <div class="bg-white p-3 rounded-2xl shadow-sm max-w-[80%]">wkwk gapapa, random aja lg nunggu orang presentasi</div>
-                    </div>
-                `;
-            } else if(appName === 'gemini') {
-                appTitle.innerText = "Gemini AI";
-                appContent.innerHTML = `
-                    <div class="p-4 space-y-3 bg-white min-h-full">
-                        <div class="bg-blue-50 text-blue-900 p-3 rounded-2xl">Halo! Ada yang ingin di-review atau dibuatkan kode web hari ini?</div>
-                        <div class="bg-slate-100 p-3 rounded-2xl ml-auto max-w-[80%]">Tolong buatkan ringkasan tugas deployment Vercel ya.</div>
-                        <div class="bg-blue-50 text-blue-900 p-3 rounded-2xl">Baik, pastikan file dinamai <code>index.html</code> dan langsung di-import ke Vercel! 🚀</div>
-                    </div>
-                `;
-            } else if(appName === 'gallery') {
-                appTitle.innerText = "Semua Foto";
-                appContent.innerHTML = `
-                    <div class="grid grid-cols-3 gap-1 p-1 bg-white min-h-full">
-                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=300" class="w-full h-28 object-cover">
-                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=300" class="w-full h-28 object-cover">
-                        <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=300" class="w-full h-28 object-cover">
-                        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=300" class="w-full h-28 object-cover">
-                        <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?q=80&w=300" class="w-full h-28 object-cover">
-                        <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?q=80&w=300" class="w-full h-28 object-cover">
-                    </div>
-                `;
-            } else if(appName === 'notes') {
-                appTitle.innerText = "Catatan";
-                appContent.innerHTML = `
-                    <div class="p-4 space-y-2 bg-white min-h-full">
-                        <h3 class="text-xl font-bold mb-3">Catatan</h3>
-                        <div class="border-b pb-2"><div class="font-semibold">interview kamis</div><div class="text-xs text-gray-500">22.50 • siapkan cerita insiden juli</div></div>
-                        <div class="border-b pb-2"><div class="font-semibold">kerjaan minggu ini</div><div class="text-xs text-gray-500">14.35 • review PR juna: migration 0042</div></div>
-                        <div class="border-b pb-2"><div class="font-semibold">belanja kucing</div><div class="text-xs text-gray-500">18/10/26 • pasir tofu 2</div></div>
-                    </div>
-                `;
-            } else if(appName === 'calendar') {
-                appTitle.innerText = "Kalender Oktober 2026";
-                appContent.innerHTML = `
-                    <div class="p-4 space-y-3 bg-white min-h-full">
-                        <div class="font-bold text-red-500 text-lg">Oktober 2026</div>
-                        <div class="bg-slate-100 p-3 rounded-xl space-y-2 text-xs">
-                            <div class="font-semibold text-slate-700">Rabu, 21 Oktober</div>
-                            <div class="bg-white p-2 rounded border-l-4 border-blue-500">09.30 - standup</div>
-                            <div class="bg-white p-2 rounded border-l-4 border-green-500">20.00 - gym (kalo ga males)</div>
-                            <div class="bg-white p-2 rounded border-l-4 border-purple-500">21.00 - latihan interview inggris</div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                appTitle.innerText = "Instagram";
-                appContent.innerHTML = `<div class="p-4 text-center text-gray-500">Feed Instagram Simulator</div>`;
-            }
-        }
-
-        function closeApp() {
-            document.getElementById('app-view').classList.add('hidden');
-        }
-    </script>
-</body>
-</html>
+                    
+                    <!-- WhatsApp Icon di Dock Bawah menggunakan PNG yang sama -->
+                    <div onclick="openApp('whatsapp')" class="w-12 h-12 rounded-2xl flex items-center justify-center cursor-pointer shadow overflow-hidden bg-white">
+                        <img src="https://lh3.googleusercontent.com/d/18q4b8COkzrTT06P0xPtW-sfCWF5OmO0U" class="w-full h-full object-cover">

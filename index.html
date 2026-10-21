@@ -36,15 +36,15 @@
         <!-- Phone Container Screen -->
         <div id="phone-screen" class="relative w-full h-full flex flex-col justify-between pt-12 pb-6 px-3 bg-cover bg-center transition-all duration-300" style="background-image: url('https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1000&auto=format&fit=crop');">
             
-            <!-- Lock Screen -->
-            <div id="lock-screen" class="flex flex-col h-full justify-between z-20 pt-4">
-                <div class="flex flex-col items-center text-white">
+            <!-- 1. LOCK SCREEN (Layer Paling Atas saat awal) -->
+            <div id="lock-screen" class="absolute inset-0 pt-14 pb-6 px-3 flex flex-col justify-between bg-cover bg-center z-40" style="background-image: url('https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1000&auto=format&fit=crop');">
+                <div class="flex flex-col items-center text-white mt-4">
                     <span class="text-sm font-medium tracking-wide drop-shadow-md">Rabu, 21 Oktober</span>
                     <h1 class="text-7xl font-light tracking-tighter drop-shadow-lg">23:46</h1>
                 </div>
 
                 <div class="space-y-2 mb-2">
-                    <div onclick="openApp('whatsapp')" class="glass-dark p-3 rounded-2xl text-white cursor-pointer hover:bg-black/70 transition border border-white/10 shadow-lg">
+                    <div onclick="unlockPhone()" class="glass-dark p-3 rounded-2xl text-white cursor-pointer hover:bg-black/70 transition border border-white/10 shadow-lg">
                         <div class="flex items-center justify-between text-[11px] text-gray-300 mb-1">
                             <div class="flex items-center space-x-1.5">
                                 <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
@@ -55,7 +55,7 @@
                         <p class="text-xs font-medium">Ilham: "kalo lo sayang orang tapi ngerasa ga dibalik..."</p>
                     </div>
 
-                    <div onclick="openApp('gemini')" class="glass-dark p-3 rounded-2xl text-white cursor-pointer hover:bg-black/70 transition border border-white/10 shadow-lg">
+                    <div onclick="unlockPhone()" class="glass-dark p-3 rounded-2xl text-white cursor-pointer hover:bg-black/70 transition border border-white/10 shadow-lg">
                         <div class="flex items-center justify-between text-[11px] text-gray-300 mb-1">
                             <div class="flex items-center space-x-1.5">
                                 <span class="w-2 h-2 rounded-full bg-blue-400"></span>
@@ -67,15 +67,15 @@
                     </div>
                 </div>
 
-                <div class="flex justify-between items-center px-4 pb-4">
-                    <button class="w-10 h-10 rounded-full glass flex items-center justify-center text-white shadow pointer-events-auto">🔦</button>
-                    <button onclick="unlockPhone()" class="text-xs text-white bg-white/20 px-5 py-2.5 rounded-full backdrop-blur font-medium hover:bg-white/30 transition shadow pointer-events-auto cursor-pointer">Ketuk untuk Membuka</button>
-                    <button class="w-10 h-10 rounded-full glass flex items-center justify-center text-white shadow pointer-events-auto">📷</button>
+                <div class="flex justify-between items-center px-4 pb-2">
+                    <button class="w-10 h-10 rounded-full glass flex items-center justify-center text-white shadow">🔦</button>
+                    <button onclick="unlockPhone()" class="text-xs text-white bg-white/25 px-5 py-2.5 rounded-full backdrop-blur font-medium hover:bg-white/40 transition shadow cursor-pointer">Ketuk untuk Membuka</button>
+                    <button class="w-10 h-10 rounded-full glass flex items-center justify-center text-white shadow">📷</button>
                 </div>
             </div>
 
-            <!-- Home Screen -->
-            <div id="home-screen" class="hidden flex-col h-full justify-between z-25 pt-2">
+            <!-- 2. HOME SCREEN (Tampil setelah lock screen ditutup) -->
+            <div id="home-screen" class="flex flex-col h-full justify-between z-20 pt-2">
                 <div class="grid grid-cols-2 gap-3 pt-2">
                     <div class="glass p-3 rounded-3xl text-white flex flex-col justify-between h-28 shadow-md">
                         <div class="flex justify-between text-xs font-medium"><span>Kalender</span><span>21 Okt</span></div>
@@ -88,42 +88,3 @@
                 </div>
 
                 <div class="grid grid-cols-4 gap-y-4 gap-x-2 px-1">
-                    <div onclick="openApp('instagram')" class="flex flex-col items-center cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl shadow-lg">📸</div>
-                        <span class="text-white text-[11px] mt-1 drop-shadow">Instagram</span>
-                    </div>
-                    <div onclick="openApp('gallery')" class="flex flex-col items-center cursor-pointer">
-                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-2xl shadow-lg">🖼️</div>
-                        <span class="text-white text-[11px] mt-1 drop-shadow">Foto</span>
-                    </div>
-                    <div onclick="openApp('calendar')" class="flex flex-col items-center cursor-pointer">
-                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-red-500 font-bold text-xl shadow-lg">📅</div>
-                        <span class="text-white text-[11px] mt-1 drop-shadow">Kalender</span>
-                    </div>
-                    <div onclick="openApp('notes')" class="flex flex-col items-center cursor-pointer">
-                        <div class="w-14 h-14 bg-amber-400 rounded-2xl flex items-center justify-center text-2xl shadow-lg">📝</div>
-                        <span class="text-white text-[11px] mt-1 drop-shadow">Catatan</span>
-                    </div>
-
-                    <div onclick="openApp('gemini')" class="flex flex-col items-center cursor-pointer">
-                        <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/20">✨</div>
-                        <span class="text-white text-[11px] mt-1 drop-shadow">Gemini</span>
-                    </div>
-                    
-                    <!-- WhatsApp Icon menggunakan PNG dari Drive Anda -->
-                    <div onclick="openApp('whatsapp')" class="flex flex-col items-center cursor-pointer relative">
-                        <div class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold z-10">26</div>
-                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden bg-white">
-                            <img src="https://lh3.googleusercontent.com/d/18q4b8COkzrTT06P0xPtW-sfCWF5OmO0U" class="w-full h-full object-cover">
-                        </div>
-                        <span class="text-white text-[11px] mt-1 drop-shadow">WhatsApp</span>
-                    </div>
-                </div>
-
-                <div class="glass p-3 rounded-3xl flex justify-around items-center mb-1">
-                    <div onclick="openApp('whatsapp')" class="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center text-white cursor-pointer shadow">📞</div>
-                    <div onclick="openApp('gallery')" class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white cursor-pointer shadow">🌐</div>
-                    
-                    <!-- WhatsApp Icon di Dock Bawah menggunakan PNG yang sama -->
-                    <div onclick="openApp('whatsapp')" class="w-12 h-12 rounded-2xl flex items-center justify-center cursor-pointer shadow overflow-hidden bg-white">
-                        <img src="https://lh3.googleusercontent.com/d/18q4b8COkzrTT06P0xPtW-sfCWF5OmO0U" class="w-full h-full object-cover">
